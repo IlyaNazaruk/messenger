@@ -3,7 +3,7 @@
 <?php
 $succes_registration = '';
 
-    if (isset($_POST['regisret'])){
+    if (isset($_POST['register'])){
 
         $data = $_POST;
 
@@ -12,14 +12,14 @@ $succes_registration = '';
         if (trim($data['login']== '')) {
             $errors[] = 'Введите имя пользователя';
         }
-        if ($data['passwrd']== '') {
+        if ($data['password']== '') {
             $errors[] = 'Введите пароль';
         }
         if ($data['password2']== '') {
             $errors[] = 'Введите повторный пароль';
         }
 
-        if($data['passwrd']!=$data['password2']){
+        if($data['password']!=$data['password2']){
             $errors[] = 'Пароли не совпадают';
         }
         if (R::count('users',"login = ?", array($data['login']))>0 ){
@@ -29,7 +29,7 @@ $succes_registration = '';
         if (empty($errors)){
            $user = R::dispense('users');
            $user->login = $data['login'];
-           $user->password = password_hash($data['passwrd'],PASSWORD_DEFAULT);
+           $user->password = password_hash($data['password'],PASSWORD_DEFAULT);
            $user->loginstatus = 0;
            $user->lastlogin = date("Y-m-d H:i:s");
 

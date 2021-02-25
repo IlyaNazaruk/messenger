@@ -13,7 +13,7 @@ if (isset($data['do_login'])){
 //print_r($user);
     if ($user){
 
-        if (password_verify($data['passwrd'], $user->password)){
+        if (password_verify($data['password'], $user->password)){
             //echo 'Пароль совпадает';
 
             $_SESSION['logget_user'] = $user;

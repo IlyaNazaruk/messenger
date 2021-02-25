@@ -37,7 +37,7 @@
                 </div>
                 <div class="mb-3">
                     <label>Введите пароль:</label>
-                    <input type="password" class="form-control" name="passwrd">
+                    <input type="password" class="form-control" name="password">
                 </div>
 
                 <button type="submit" class="btn btn-primary" name="do_login">Войти</button>
