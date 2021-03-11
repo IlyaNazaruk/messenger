@@ -1,23 +1,22 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
 
-    setInterval(function(){
+    setInterval(function () {
         get_chat_history();
         chek_activity();
-      show_users();
+        show_users();
 
     }, 1000);
 
 
-    function get_chat_history()
-    {
+    function get_chat_history() {
 
 
         $.ajax({
             url: 'ajax/getlastmsg.php',
-            method:"post",
+            method: "post",
 
-            success:function(data){
+            success: function (data) {
                 $('.table_msg').html('');
                 $(".message-table").prepend(data);
             }
@@ -25,44 +24,41 @@ $(document).ready(function(){
 
     }
 
-    function chek_activity()
-    {
+    function chek_activity() {
         $.ajax({
             url: 'ajax/checkact.php',
-            method:"post",
+            method: "post",
 
-            success:function(){
+            success: function () {
 
             }
         })
 
     }
 
-    function show_users()
-    {
+    function show_users() {
         $.ajax({
             url: 'ajax/showusers.php',
-            method:"post",
+            method: "post",
 
-            success:function(data){
-              $(".show-users").html(data);
+            success: function (data) {
+                $(".show-users").html(data);
             }
         })
 
     }
 
 
-
-    $('.send-message').click(function() {
-        message =  $('.msg-text').val();
+    $('.send-message').click(function () {
+        message = $('.msg-text').val();
         name_user = $('.name-user').html();
 
-        if (message !=''){
+        if (message != '') {
 
             //$(".messages-window").scrollTop();
             // $("div.content").scrollTop(30);
 
-        $('.msg-text').val('');
+            $('.msg-text').val('');
 
             $.ajax({
                 url: 'ajax/addmessage.php',
@@ -72,12 +68,11 @@ $(document).ready(function(){
                     message: message,
                     name_user: name_user,
                 },
-                success: function(data){
-                   // alert(data);
+                success: function (data) {
+                    // alert(data);
                     $('.table_msg').html('');
 
                     $(".message-table").prepend(data);
-
 
 
                 }
